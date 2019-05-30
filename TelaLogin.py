@@ -68,17 +68,17 @@ class Formulario(object):
         caixaS = self.entS.get()
 
 
-        if {caixaU}  in self.database :
-            self.MSG('Usuário existente')
+        if caixaU not in self.database:
+            self.database.append({caixaU: caixaS})
+            pickle.dump(self.database,open('test.pkl','wb'))
+            self.MSG('Usuário adicionado')
+            print(self.database)
 
         elif len(caixaU) == 0:
             self.MSG('nenhum campo pode está vazio')
 
         else:
-            self.database.append({caixaU: caixaS})
-            pickle.dump(self.database,open('test.pkl','wb'))
-            self.MSG('Usuário adicionado')
-            print(self.database)
+
 
 
 
