@@ -40,14 +40,19 @@ class Formulario(object):
 
         # ação de salvar o usuario e senha;
         self.botS = Button(janela, text='Salvar', command=self.Criar_User, font=self.letras2, width='10',
-                           bg='#008000', )
+                           bg='#008000',activebackground='white' )
         self.botV = Button(janela, text='Visualizar', command=self.Visualizar, font=self.letras2, width='10',
-                           bg='#008000')
+                           bg='#008000',activebackground='white' )
         self.botG = Button(janela, text='Gerar senha', command=self.Gerar, font=self.letras2, width='10',
-                           bg='#008000', )
+                           bg='#008000',activebackground='white' )
+        self.botD = Button(janela,text='Deletar',font=self.letras2, width='10',bg='red',activebackground='black',
+                           activeforeground='white',command=self.ApagarDados)
+
+
         self.botS.pack(side=LEFT)
         self.botV.pack(side=LEFT)
         self.botG.pack(side=LEFT)
+        self.botD.pack(side=LEFT)
 
         # informação final;
         self.inf2 = Label(janela2, text='', bg='black', font=('Verdana', '10', 'italic bold'))
@@ -61,22 +66,38 @@ class Formulario(object):
     def Criar_User(self):
         caixaU = self.entU.get()
         caixaS = self.entS.get()
-        self.database.append({caixaU: caixaS})
-        import test
-        #test.Contas(caixaU,caixaS)
-        pickle.dump(self.database,open('test.pkl','wb'))
+
+
+        if {caixaU}  in self.database :
+            self.MSG('Usuário existente')
+
+        elif len(caixaU) == 0:
+            self.MSG('nenhum campo pode está vazio')
+
+        else:
+            self.database.append({caixaU: caixaS})
+            pickle.dump(self.database,open('test.pkl','wb'))
+            self.MSG('Usuário adicionado')
+            print(self.database)
+
+
+
+
+
 
 
     # visualizar os Usuarios e senha;
     def Visualizar(self):
         user = self.entU.get()
         if user == 'r4':
-
             self.MSG(self.database)
-            self.inf2['bg'] = '#87CEEB'
+            if len(self.database) == 0:
+                self.inf2['text'] = self.MSG('não há dados')
+
+            self.inf2['bg'] = '#000000'
         else:
             self.inf2['text'] = self.MSG('Chave necessária')
-        #self.inf2['text'] = 'test'
+
 
     # mensagem
     def MSG(self, msg, cor='red', Fundo='#87CEEB'):
@@ -85,8 +106,29 @@ class Formulario(object):
 
     # gerar senha para Usuário
     def Gerar(self):
-        pass
+        import random,string
 
+        gerador = string.ascii_letters
+        box = []
+
+        for i in range(9):
+            box.append(random.choice(gerador))
+
+        self.inf2['height'] = '30'
+        self.inf2['text'] = box
+        self.inf2['bg'] = 'white'
+
+    def ApagarDados(self):
+        caixaU = self.entU.get()
+        caixaS = self.entS.get()
+
+        if caixaU  in self.database:
+            self.inf2['text'] = self.MSG('dados existente')
+
+        else:
+            self.database.remove({caixaU:caixaS})
+            self.inf2['text'] = self.MSG('apagado com sucesso')
+        print(self.database)
 
 tela = Tk()
 janela = Frame(tela)
@@ -100,5 +142,3 @@ tela.title('Gerenciador de Senhas')
 tela.geometry('500x320')
 
 mainloop()
-
-'''NÃO MEXER'''

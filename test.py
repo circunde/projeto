@@ -1,7 +1,7 @@
 import pickle
 
 
-def Contas(usuario, passw):
+def Contas():
     try:
         Users = pickle.load(open('test.pkl', 'rb'))
         print(Users)
@@ -10,7 +10,7 @@ def Contas(usuario, passw):
         Users = []
         print('recriando')
         pickle.dump(Users, open('test.pkl', 'wb'))
-        # caixa.close()
 
 
-Contas('', '')
+
+Contas()
