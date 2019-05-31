@@ -48,7 +48,6 @@ class Formulario(object):
         self.botD = Button(janela,text='Deletar',font=self.letras2, width='10',bg='red',activebackground='black',
                            activeforeground='white',command=self.ApagarDados)
 
-
         self.botS.pack(side=LEFT)
         self.botV.pack(side=LEFT)
         self.botG.pack(side=LEFT)
@@ -64,27 +63,19 @@ class Formulario(object):
 
     # função para salvar usuário e senha;
     def Criar_User(self):
-        caixaU = self.entU.get()
-        caixaS = self.entS.get()
+        caixa = self.entU.get(), '=>', self.entS.get()
+
+        if len(self.entU.get()) == 0 or len(self.entS.get()) == 0:
+            self.MSG('Não pode conter espaços vazios')
 
 
-        if caixaU not in self.database:
-            self.database.append({caixaU: caixaS})
-            pickle.dump(self.database,open('test.pkl','wb'))
+        elif caixa not in self.database:
+            self.database.append(caixa)
             self.MSG('Usuário adicionado')
-            print(self.database)
+            pickle.dump(self.database, open('test.pkl', 'wb'))
 
-        elif len(caixaU) == 0:
-            self.MSG('nenhum campo pode está vazio')
-
-        else:
-
-
-
-
-
-
-
+        if caixa in self.database:
+            self.MSG('Usuário existente')
 
     # visualizar os Usuarios e senha;
     def Visualizar(self):
@@ -98,7 +89,6 @@ class Formulario(object):
         else:
             self.inf2['text'] = self.MSG('Chave necessária')
 
-
     # mensagem
     def MSG(self, msg, cor='red', Fundo='#87CEEB'):
         self.inf2['text'] = msg
@@ -106,7 +96,7 @@ class Formulario(object):
 
     # gerar senha para Usuário
     def Gerar(self):
-        import random,string
+        import random, string
 
         gerador = string.ascii_letters
         box = []
@@ -119,15 +109,15 @@ class Formulario(object):
         self.inf2['bg'] = 'white'
 
     def ApagarDados(self):
-        caixaU = self.entU.get()
-        caixaS = self.entS.get()
+        caixa = self.entU.get(), '=>', self.entS.get()
 
-        if caixaU  in self.database:
-            self.inf2['text'] = self.MSG('dados existente')
+        if caixa not in self.database:
+            self.MSG('dados inexistentes')
 
         else:
-            self.database.remove({caixaU:caixaS})
-            self.inf2['text'] = self.MSG('apagado com sucesso')
+            self.database.remove(caixa)
+            self.MSG('apagado com sucesso')
+            pickle.dump(self.database,open('test.pkl','wb'))
         print(self.database)
 
 tela = Tk()
