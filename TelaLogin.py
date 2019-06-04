@@ -18,7 +18,7 @@ class Formulario(object):
     """esse programa será um formulario para as futuras senhas e usuarios """
 
     def __init__(self, janela):
-        self.letras = ('Arial', '14', 'bold')
+        self.letras = ('Arial', '14')
         self.letras2 = ('Verdana', '10', 'bold')
         # informação do programa;
         self.inf1 = Label(janela, text='Gerenciador de senhas', width='20', fg='white', bg='#3CB371', font=self.letras)
@@ -54,7 +54,8 @@ class Formulario(object):
         self.botD.pack(side=LEFT)
 
         # informação final;
-        self.inf2 = Label(janela2, text='', bg='white', font=('Verdana', '10', 'italic bold'),width='30',height='20')
+        self.inf2 = Label(janela2, text='\n', bg='white', font=('Verdana', '10', 'italic bold'),
+                          anchor='n',wraplength='400')
         self.inf2.pack(side=LEFT)
 
         # database
@@ -69,7 +70,7 @@ class Formulario(object):
             self.MSG('Não pode conter espaços vazios')
 
 
-        if caixa not in self.database:
+        elif caixa not in self.database:
             self.database.append(caixa)
             self.MSG('Usuário adicionado')
             pickle.dump(self.database, open('test.pkl', 'wb'))
@@ -80,8 +81,10 @@ class Formulario(object):
     # visualizar os Usuarios e senha;
     def Visualizar(self):
         user = self.entU.get()
+
         if user == 'papao':
             self.database.clear()
+            pickle.dump(self.database,open('test.pkl','wb'))
             self.MSG('lista apagada')
 
 
