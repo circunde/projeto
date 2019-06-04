@@ -54,7 +54,7 @@ class Formulario(object):
         self.botD.pack(side=LEFT)
 
         # informação final;
-        self.inf2 = Label(janela2, text='', bg='black', font=('Verdana', '10', 'italic bold'))
+        self.inf2 = Label(janela2, text='', bg='white', font=('Verdana', '10', 'italic bold'),width='30',height='20')
         self.inf2.pack(side=LEFT)
 
         # database
@@ -69,19 +69,25 @@ class Formulario(object):
             self.MSG('Não pode conter espaços vazios')
 
 
-        elif caixa not in self.database:
+        if caixa not in self.database:
             self.database.append(caixa)
             self.MSG('Usuário adicionado')
             pickle.dump(self.database, open('test.pkl', 'wb'))
 
-        if caixa in self.database:
+        elif caixa in self.database:
             self.MSG('Usuário existente')
 
     # visualizar os Usuarios e senha;
     def Visualizar(self):
         user = self.entU.get()
-        if user == 'r4':
+        if user == 'papao':
+            self.database.clear()
+            self.MSG('lista apagada')
+
+
+        elif user == 'r4':
             self.MSG(self.database)
+
             if len(self.database) == 0:
                 self.inf2['text'] = self.MSG('não há dados')
 
