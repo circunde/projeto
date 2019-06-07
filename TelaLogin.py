@@ -20,6 +20,8 @@ class Formulario(object):
     def __init__(self, janela):
         self.letras = ('Arial', '14')
         self.letras2 = ('Verdana', '10', 'bold')
+        self.letras3 = ('Arial', '18')
+
         # informação do programa;
         self.inf1 = Label(janela, text='Gerenciador de senhas', width='20', fg='white', bg='#3CB371', font=self.letras)
         self.inf1.pack()
@@ -54,7 +56,7 @@ class Formulario(object):
         self.botD.pack(side=LEFT)
 
         # informação final;
-        self.inf2 = Label(janela2, text='\n', bg='white', font=('Verdana', '10', 'italic bold'),
+        self.inf2 = Label(janela2, text='', bg='black', font=('Verdana', '10', 'italic bold'),
                           anchor='n',wraplength='400')
         self.inf2.pack(side=LEFT)
 
@@ -64,19 +66,23 @@ class Formulario(object):
 
     # função para salvar usuário e senha;
     def Criar_User(self):
-        caixa = self.entU.get(), '=>', self.entS.get()
+        caixa = self.entU.get(), '-', self.entS.get() # substituir separador por seta dupla ou circulo preenchido
 
         if len(self.entU.get()) == 0 or len(self.entS.get()) == 0:
-            self.MSG('Não pode conter espaços vazios')
+            self.MSG('Não pode conter espaços vazios','red',('Arial','14'))
+
+        if caixa in self.database:
+            self.MSG('Usuário existente','red',('Arial','14'))
 
 
         elif caixa not in self.database:
             self.database.append(caixa)
-            self.MSG('Usuário adicionado')
+            self.MSG('Usuário adicionado','red',('Arial','14'))
             pickle.dump(self.database, open('test.pkl', 'wb'))
 
-        elif caixa in self.database:
-            self.MSG('Usuário existente')
+
+
+
 
     # visualizar os Usuarios e senha;
     def Visualizar(self):
@@ -89,7 +95,7 @@ class Formulario(object):
 
 
         elif user == 'r4':
-            self.MSG(self.database)
+            self.MSG(self.database, 'red', ('Arial', '14', 'bold'))
 
             if len(self.database) == 0:
                 self.inf2['text'] = self.MSG('não há dados')
@@ -99,23 +105,25 @@ class Formulario(object):
             self.inf2['text'] = self.MSG('Chave necessária')
 
     # mensagem
-    def MSG(self, msg, cor='red', Fundo='#87CEEB'):
+    def MSG(self, msg, cor='red', fonte=('Arial','16','bold')):
         self.inf2['text'] = msg
         self.inf2['fg'] = cor
+        self.inf2['font'] = fonte
 
     # gerar senha para Usuário
     def Gerar(self):
         import random, string
 
-        gerador = string.ascii_letters
+        gerador = 'ABCDEFGHIJLKMNOPQRSTUVWXYZabcdefghijlkmnopqrstuvwxyz1234567890@#$-_'
         box = []
 
         for i in range(9):
             box.append(random.choice(gerador))
 
-        self.inf2['height'] = '30'
-        self.inf2['text'] = box
-        self.inf2['bg'] = 'white'
+        self.inf2['height'] = '50'
+        self.inf2['font'] = self.letras
+        self.MSG(box,'green')
+
 
     def ApagarDados(self):
         caixa = self.entU.get(), '=>', self.entS.get()
