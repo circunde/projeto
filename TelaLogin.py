@@ -88,13 +88,7 @@ class Formulario(object):
     def Visualizar(self):
         user = self.entU.get()
 
-        if user == 'papao':
-            self.database.clear()
-            pickle.dump(self.database,open('test.pkl','wb'))
-            self.MSG('lista apagada')
-
-
-        elif user == 'r4':
+        if user == 'r4':
             self.MSG(self.database, 'red', ('Arial', '14', 'bold'))
 
             if len(self.database) == 0:
@@ -127,10 +121,16 @@ class Formulario(object):
 
     def ApagarDados(self):
         caixa = self.entU.get(), '=>', self.entS.get()
+        user = self.entU.get()
+
+
 
         if caixa not in self.database:
             self.MSG('dados inexistentes')
-
+            if user == 'papao':
+                self.database.clear()
+                pickle.dump(self.database, open('test.pkl', 'wb'))
+                self.MSG('lista apagada')
         else:
             self.database.remove(caixa)
             self.MSG('apagado com sucesso')
