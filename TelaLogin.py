@@ -33,22 +33,22 @@ class Formulario(object):
         w.pack()
 
         # entrada de usuario;
-        self.entU = Entry(janela, bd='4', font=self.letras, justify=CENTER, width='15', bg='#228B22')
+        self.entU = Entry(janela, bd='4', font=self.letras, justify=CENTER, width='15', bg='#8FBC8F')
         self.entU.pack()
 
         # entrada de senha;
-        self.entS = Entry(janela, show='*', font=self.letras, bd='4', justify=CENTER, width='15', bg='#228B22')
+        self.entS = Entry(janela, show='*', font=self.letras, bd='4', justify=CENTER, width='15', bg='#8FBC8F')
         self.entS.pack()
 
         # ação de salvar o usuario e senha;
         self.botS = Button(janela, text='Salvar', command=self.Criar_User, font=self.letras2, width='10',
-                           bg='#008000',activebackground='white' )
+                           bg='#008000',activebackground='white',fg='#8FBC8F' )
         self.botV = Button(janela, text='Visualizar', command=self.Visualizar, font=self.letras2, width='10',
-                           bg='#008000',activebackground='white' )
+                           bg='#008000',activebackground='white',fg='#8FBC8F' )
         self.botG = Button(janela, text='Gerar senha', command=self.Gerar, font=self.letras2, width='10',
-                           bg='#008000',activebackground='white' )
+                           bg='#008000',activebackground='white',fg='#8FBC8F' )
         self.botD = Button(janela,text='Deletar',font=self.letras2, width='10',bg='red',activebackground='black',
-                           activeforeground='white',command=self.ApagarDados)
+                           activeforeground='white',command=self.ApagarDados,fg='#8FBC8F')
 
         self.botS.pack(side=LEFT)
         self.botV.pack(side=LEFT)
@@ -59,6 +59,7 @@ class Formulario(object):
         self.inf2 = Label(janela2, text='', bg='black', font=('Verdana', '10', 'italic bold'),
                           anchor='n',wraplength='400')
         self.inf2.pack(side=LEFT)
+
 
         # database
         self.database = pickle.load(open('test.pkl', 'rb'))
@@ -79,10 +80,6 @@ class Formulario(object):
             self.database.append(caixa)
             self.MSG('Usuário adicionado','red',('Arial','14'))
             pickle.dump(self.database, open('test.pkl', 'wb'))
-
-
-
-
 
     # visualizar os Usuarios e senha;
     def Visualizar(self):
@@ -106,7 +103,7 @@ class Formulario(object):
 
     # gerar senha para Usuário
     def Gerar(self):
-        import random, string
+        import random
 
         gerador = 'ABCDEFGHIJLKMNOPQRSTUVWXYZabcdefghijlkmnopqrstuvwxyz1234567890@#$-_'
         box = []
@@ -116,14 +113,12 @@ class Formulario(object):
 
         self.inf2['height'] = '50'
         self.inf2['font'] = self.letras
-        self.MSG(box,'green')
+        self.MSG(box, 'green')
 
 
     def ApagarDados(self):
         caixa = self.entU.get(), '=>', self.entS.get()
         user = self.entU.get()
-
-
 
         if caixa not in self.database:
             self.MSG('dados inexistentes')
@@ -137,6 +132,7 @@ class Formulario(object):
             pickle.dump(self.database,open('test.pkl','wb'))
         print(self.database)
 
+
 tela = Tk()
 janela = Frame(tela)
 janela.pack()
@@ -146,6 +142,6 @@ tela['bg'] = 'black'
 janela['bg'] = 'black'
 Formulario(janela)
 tela.title('Gerenciador de Senhas')
-tela.geometry('500x320')
+tela.geometry('500x420')
 
 mainloop()
