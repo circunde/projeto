@@ -36,9 +36,16 @@ class Formulario(object):
         self.entU = Entry(janela, bd='4', font=self.letras, justify=CENTER, width='15', bg='#8FBC8F')
         self.entU.pack()
 
+        self.infU = Label(janela, text='Adicione Usuário ou informação principal', font=self.letras, bg='black',
+                          fg='white')
+        self.infU.pack()
+
         # entrada de senha;
         self.entS = Entry(janela, show='*', font=self.letras, bd='4', justify=CENTER, width='15', bg='#8FBC8F')
         self.entS.pack()
+
+        self.infS = Label(janela, text='senha', font=self.letras, bg='black', fg='white')
+        self.infS.pack()
 
         # ação de salvar o usuario e senha;
         self.botS = Button(janela, text='Salvar', command=self.Criar_User, font=self.letras2, width='10',
@@ -67,7 +74,7 @@ class Formulario(object):
 
     # função para salvar usuário e senha;
     def Criar_User(self):
-        caixa = self.entU.get(), '-', self.entS.get() # substituir separador por seta dupla ou circulo preenchido
+        caixa = self.entU.get(), '-', self.entS.get()
 
         if len(self.entU.get()) == 0 or len(self.entS.get()) == 0:
             self.MSG('Não pode conter espaços vazios','red',('Arial','14'))
@@ -85,7 +92,7 @@ class Formulario(object):
     def Visualizar(self):
         user = self.entU.get()
 
-        if user == 'r4':
+        if user == '41796':
             self.MSG(self.database, 'red', ('Arial', '14', 'bold'))
 
             if len(self.database) == 0:
@@ -122,7 +129,7 @@ class Formulario(object):
 
         if caixa not in self.database:
             self.MSG('dados inexistentes')
-            if user == 'papao':
+            if user == '01019':
                 self.database.clear()
                 pickle.dump(self.database, open('test.pkl', 'wb'))
                 self.MSG('lista apagada')
