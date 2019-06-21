@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6c2ecf4a-2e5c-4022-9d11-4cd6c6bb036c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/cripto.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cripto.py" beforeDir="false" afterPath="$PROJECT_DIR$/cripto.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,8 +16,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/cripto.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="17" column="8" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="8" />
+            <state relative-caret-position="51">
+              <caret line="3" selection-start-line="3" selection-end-line="3" />
             </state>
           </provider>
         </entry>
@@ -292,7 +291,14 @@
       <option name="project" value="LOCAL" />
       <updated>1560809059081</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="alteração da variavel caixacodigo de lista para dicionario">
+      <created>1561044496796</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1561044496796</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TodoView">
@@ -306,9 +312,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49754903" visible="true" weight="0.14372164" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49754903" visible="true" weight="0.071104385" />
       <window_info id="Structure" order="1" sideWeight="0.502451" side_tool="true" weight="0.13712122" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="0" />
@@ -394,7 +399,8 @@
     <MESSAGE value="msg de usuario existente resolvido" />
     <MESSAGE value="deletar completamente a lista alterada" />
     <MESSAGE value="g" />
-    <option name="LAST_COMMIT_MESSAGE" value="g" />
+    <MESSAGE value="alteração da variavel caixacodigo de lista para dicionario" />
+    <option name="LAST_COMMIT_MESSAGE" value="alteração da variavel caixacodigo de lista para dicionario" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/Contador.py" />
@@ -479,8 +485,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/cripto.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="17" column="8" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="8" />
+        <state relative-caret-position="51">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
         </state>
       </provider>
     </entry>
