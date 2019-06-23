@@ -1,10 +1,10 @@
 import random
 
-caixacodigo = {'1':'qaz', '2':'wsx', '3':'edc', '4':'rfv', '5':'tgb', '6':'yhn', '7':'ujm', '8':'ik', '9':'ol', '0':'pÁ',
+caixacodigo = {'1':'qaz', '2':'wsx', '3':'edc', '4':'rfv', '5':'tgb', '6':'yhn', '7':'ujm', '8':'ik', '9':'ol', '0':'p√ß',
                '1#':'QAZ', '2#':'WSX', '3#':'EDC', '4#':'RFV', '5#':'TGB', '6#':'YHN', '7#':'UJM', '8#':'IK', '9#':'OL',
-               '0#':'P«','1b':'·', '3b':'È','8b':'Ì', '9b':'Û', '7b': '˙', '1B':'¡', '3B':'…', '8B':'Õ', '9B':'”','7B': '⁄',
-               '1c':'‚', '3c':'Í', '8c':'Ó', '9c':'Ù', '7c':'˚', '1C':'¬', '3C':' ','8C':'Œ', '9C':'‘','7C':'€', '1d':'„',
-               '9d':'ı', '1D':'√', '9D':'’'}
+               '0#':'P√á','1b':'√°', '3b':'√©','8b':'√≠', '9b':'√≥', '7b': '√∫', '1B':'√Å', '3B':'√â', '8B':'√ç', '9B':'√ì','7B': '√ö',
+               '1c':'√¢', '3c':'√™', '8c':'√Æ', '9c':'√¥', '7c':'√ª', '1C':'√Ç', '3C':'√ä','8C':'√é', '9C':'√î','7C':'√õ', '1d':'√£',
+               '9d':'√µ', '1D':'√É', '9D':'√ï'}
 
 
 class Criptografia(object):
@@ -12,14 +12,13 @@ class Criptografia(object):
         *** descodificar a mensagem ***
         crio esse programa no intuito de formar minha propria criptografia para fins de uso proprio
         - tabela
-        - informaÁao recebida
-        - informaÁao convertida
+        - informa√ßao recebida
+        - informa√ßao convertida
         - diferentes formas de cripto
         - testes
         - ajustes
         - u-d-t-q-c-s-st-o-n-z
-        - ·-È-Ì-Û-˙ - ‚-Í-Ó-Ù-˚ - „-ı
-        - ¡-…-Õ-”-⁄ - ¬- -Œ-‘-€ - √-’'''
+       '''
 
     def __init__(self):
         salvar = False
@@ -30,11 +29,12 @@ class Criptografia(object):
             if salvar == True:
                 self.SalvarMsg()
             print('salvo !')
-        elif self.comando == 'codificar':
+
+        elif self.comando == '1':
             self.Codificar()
 
         else:
-            print('o texto ser· codificado')
+            print('nada foi alterado')
 
     def SalvarMsg(self):
         self.arquivar = open('Msgs.txt', 'w')
@@ -43,10 +43,24 @@ class Criptografia(object):
         self.arquivar.close()
 
     def Codificar(self):
-        valores = [caixacodigo.values()]
+        valores = []
+        LetrasEmOrdem = []
 
-        for letras in self.entradaDaMsg:
-            if letras in valores:
-                return print(caixacodigo.keys())
-            else:
-                return 0
+        for k, v in caixacodigo.items():
+            for r in v:
+                if r in self.entradaDaMsg:
+                    LetrasEmOrdem.append(r)
+                    LetrasEmOrdem.sort()
+                    valores.append(k)
+        print(LetrasEmOrdem)
+        print(valores)
+
+
+
+
+
+Criptografia()
+
+'''        for k,v in caixacodigo.items():
+            if v == self.entradaDaMsg:
+                print(k)'''
