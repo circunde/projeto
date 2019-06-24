@@ -44,14 +44,12 @@ class Criptografia(object):
 
     def Codificar(self):
         valores = []
-        LetrasEmOrdem = []
+        LetrasEmOrdem = str(self.entradaDaMsg)
 
-        for k, v in caixacodigo.items():
-            for r in v:
-                if r in self.entradaDaMsg:
-                    LetrasEmOrdem.append(r)
-                    LetrasEmOrdem.sort()
-                    valores.append(k)
+        for k in LetrasEmOrdem:
+            for l in caixacodigo.values():
+                if k in l:
+                    print(k)
         print(LetrasEmOrdem)
         print(valores)
 
@@ -63,4 +61,9 @@ Criptografia()
 
 '''        for k,v in caixacodigo.items():
             if v == self.entradaDaMsg:
-                print(k)'''
+                print(k)
+                
+                -jogar letras em uma variavel em ordem original
+                -comparar essa letra com os valores das chaves
+                -substituir pelo valores respectivo da chave 
+                '''
