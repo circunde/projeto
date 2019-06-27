@@ -137,7 +137,7 @@ class Formulario(object):
             self.database.remove(caixa)
             self.MSG('apagado com sucesso')
             pickle.dump(self.database, open('test.pkl','wb'))
-        print(self.database)
+
 
 
 tela = Tk()
