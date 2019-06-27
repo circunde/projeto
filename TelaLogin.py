@@ -124,7 +124,7 @@ class Formulario(object):
 
 
     def ApagarDados(self):
-        caixa = self.entU.get(), '=>', self.entS.get()
+        caixa = self.entU.get(), '-', self.entS.get()
         user = self.entU.get()
 
         if caixa not in self.database:
@@ -136,7 +136,7 @@ class Formulario(object):
         else:
             self.database.remove(caixa)
             self.MSG('apagado com sucesso')
-            pickle.dump(self.database,open('test.pkl','wb'))
+            pickle.dump(self.database, open('test.pkl','wb'))
         print(self.database)
 
 
